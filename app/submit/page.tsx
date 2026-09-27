@@ -1,0 +1,4 @@
+'use client';
+import Link from 'next/link';
+import { useState } from 'react';
+export default function Submit(){const [sent,setSent]=useState(false);return <main className="shell"><nav className="nav"><Link className="brand" href="/">GrantGuard</Link><span className="pill">Studionet 61999</span></nav><section className="section"><div className="eyebrow">Applicant path</div><h1>Submit a proposal</h1><div className="card"><p className="muted">Connect an injected EIP-1193 wallet, select a live round, and submit a proposal with public evidence. The contract performs validation and the frontend waits for finalized consensus.</p><button className="button" onClick={()=>setSent(true)}>{sent?'Submitted in demo mode':'Connect wallet and continue'}</button>{sent&&<p className="status">Demo form ready. Wire the deployed contract address before production submission.</p>}</div></section></main>}

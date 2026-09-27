@@ -1,0 +1,28 @@
+name: GrantGuard quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install contract tooling
+        run: pip install -r requirements.txt
+      - name: Lint and validate contract
+        run: genvm-lint check contracts/grantguard.py --json
+      - name: Direct tests
+        run: python -m pytest tests/direct -q
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run build

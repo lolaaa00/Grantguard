@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export default function Certificates(){return <main className="shell"><nav className="nav"><Link className="brand" href="/">GrantGuard</Link></nav><section className="section"><div className="eyebrow">On-chain awards</div><h1>Certificates</h1><div className="card"><p className="muted">Finalized award certificates will appear here after a challenge window closes and the winner is settled by the contract.</p><p className="status">No certificates indexed yet.</p></div></section></main>}
